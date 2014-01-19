@@ -1,36 +1,82 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
   <h3 class="text-muted">procedural radio</h3>
 </div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    <img src="http://www.wrek.org/wp-content/themes/wrek/images/logo.png" class="pull-left" style="margin-right: 40px;" />
+    Press the button and pick out something out of the vault that follows the guidelines!
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+  <p><button class="btn btn-lg btn-primary" ng-click="randomizeAll()">radioize!</button></p>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Genre</h3>
+    <h4>
+      <span class="label label-primary" ng-bind="currentGenre"></span>
+    </h4>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <h3>Format</h3>
+    <h4>
+      <span class="label label-info" ng-bind="currentFormat"></span>
+    </h4>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    <h3>Starts With</h3>
+    <h4>
+      <span class="label label-success" ng-bind="currentLetter"></span>
+    </h4>
+  </div>
+
+  <div class="col-lg-6">
+    <h3>Random Number</h3>
+    <p>Do whatever you want with this, like a track number.</p>
+    <h4>
+      <span class="label label-danger" ng-bind="randomNumber"></span>
+    </h4>
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="randomNumberMin" class="col-lg-2 control-label">Min</label>
+        <div class="col-lg-10">
+          <input type="number" class="form-control" ng-model="randomNumberMin" id="randomNumberMin" placeholder="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="randomNumberMax" class="col-lg-2 control-label">Max</label>
+        <div class="col-lg-10">
+          <input type="number" class="form-control" ng-model="randomNumberMax" id="randomNumberMax" placeholder="0">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Letter</th>
+          <th>Genre</th>
+          <th>Format</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="log in logs">
+          <td>{{ log.letter }}</td>
+          <td>{{ log.genre }}</td>
+          <td>{{ log.format }}</td>
+          <td>{{ log.number }}</td>
+        </tr>
+        <tr ng-if="logs.length == 0">
+          <td colspan="4">Nothing yet!</td>
+        </tr>
+      </table>
+  </div>
 </div>
 
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>♥ p@ + k8</p>
 </div>
